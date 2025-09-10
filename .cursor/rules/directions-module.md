@@ -11,6 +11,7 @@
 - **Validation**: class-validator + class-transformer with global `ValidationPipe`
 - **Docs**: @nestjs/swagger
 
+
 ### 3. Data Model (TypeORM Entity)
 - File: `src/directions/entities/direction.entity.ts`
 - Table: `directions`
