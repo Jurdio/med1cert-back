@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './src/app.module';
+import { AppModule } from '../src/app.module';
 import { DataSource } from 'typeorm';
-import { AdminUser } from './src/sa-auth/entities/admin-user.entity';
-import { HashingService } from './src/common/hashing/hashing.service';
+import { AdminUser } from '../src/sa-auth/entities/admin-user.entity';
+import { HashingService } from '../src/common/hashing/hashing.service';
 
 async function run() {
   const email = process.argv[2];
@@ -11,7 +11,7 @@ async function run() {
   const password = process.argv[4];
 
   if (!email || !password) {
-    console.error('Usage: ts-node create-admin.ts <email> <fullName?> <password>');
+    console.error('Usage: ts-node scripts/create-admin.ts <email> <fullName?> <password>');
     process.exit(1);
   }
 
@@ -40,11 +40,9 @@ async function run() {
     console.error('Failed:', err);
     process.exitCode = 1;
   } finally {
-    await (await NestFactory.createApplicationContext(AppModule)).close();
+    await app.close();
     setTimeout(() => process.exit(process.exitCode ?? 0), 100);
   }
 }
 
 run();
-
-

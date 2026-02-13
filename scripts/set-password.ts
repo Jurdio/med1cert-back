@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import AppDataSource from './typeorm.config';
+import AppDataSource from '../typeorm.config';
 import * as bcrypt from 'bcryptjs';
 
 function parseArgs(): { email: string; password: string } {
@@ -11,7 +11,7 @@ function parseArgs(): { email: string; password: string } {
     else if (arg.startsWith('--password=')) password = arg.substring('--password='.length);
   }
   if (!email || !password) {
-    console.error('Usage: ts-node set-password.ts --email=<email> --password=<password>');
+    console.error('Usage: ts-node scripts/set-password.ts --email=<email> --password=<password>');
     process.exit(1);
   }
   return { email, password };
@@ -49,5 +49,3 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
-

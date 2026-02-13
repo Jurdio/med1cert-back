@@ -22,6 +22,8 @@ import { AuthModule } from './auth/auth.module';
 import { TenantsModule } from './tenants/tenants.module';
 import { SaModule } from './sa/sa.module';
 import { SaAuthModule } from './sa-auth/sa-auth.module';
+import { ReportsModule } from './reports/reports.module';
+import { PatientsModule } from './patients/patients.module';
 
 @Module({
   imports: [
@@ -60,6 +62,8 @@ import { SaAuthModule } from './sa-auth/sa-auth.module';
     AuthModule,
     SaModule,
     SaAuthModule,
+    ReportsModule,
+    PatientsModule,
   ],
   controllers: [AppController],
   providers: [

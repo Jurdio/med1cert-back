@@ -3,14 +3,14 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const keypair = Keypair.generate();
 
 const publicKey = keypair.publicKey.toBase58();
 const secretKey = Buffer.from(keypair.secretKey).toString('hex');
 
-const envFilePath = path.join(__dirname, '.env');
+const envFilePath = path.join(__dirname, '../.env');
 
 let envFileContent = '';
 if (fs.existsSync(envFilePath)) {
